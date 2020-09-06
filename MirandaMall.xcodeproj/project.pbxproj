@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F06D7F5F25057922007872D0 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06D7F5E25057922007872D0 /* LandingViewController.swift */; };
+		F06D7F6125057B5E007872D0 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06D7F6025057B5E007872D0 /* CategoryCollectionViewCell.swift */; };
+		F06D7F6325057C66007872D0 /* CategoryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06D7F6225057C66007872D0 /* CategoryModels.swift */; };
 		F0D330522504770F003ED365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D330512504770F003ED365 /* AppDelegate.swift */; };
-		F0D330542504770F003ED365 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D330532504770F003ED365 /* SceneDelegate.swift */; };
 		F0D330562504770F003ED365 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D330552504770F003ED365 /* ViewController.swift */; };
 		F0D330592504770F003ED365 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0D330572504770F003ED365 /* Main.storyboard */; };
 		F0D3305B25047719003ED365 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0D3305A25047719003ED365 /* Assets.xcassets */; };
@@ -27,9 +29,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F06D7F5E25057922007872D0 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
+		F06D7F6025057B5E007872D0 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		F06D7F6225057C66007872D0 /* CategoryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModels.swift; sourceTree = "<group>"; };
 		F0D3304E2504770F003ED365 /* MirandaMall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MirandaMall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0D330512504770F003ED365 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F0D330532504770F003ED365 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F0D330552504770F003ED365 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F0D330582504770F003ED365 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F0D3305A25047719003ED365 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,12 +84,14 @@
 			isa = PBXGroup;
 			children = (
 				F0D330512504770F003ED365 /* AppDelegate.swift */,
-				F0D330532504770F003ED365 /* SceneDelegate.swift */,
 				F0D330552504770F003ED365 /* ViewController.swift */,
 				F0D330572504770F003ED365 /* Main.storyboard */,
 				F0D3305A25047719003ED365 /* Assets.xcassets */,
 				F0D3305C25047719003ED365 /* LaunchScreen.storyboard */,
 				F0D3305F25047719003ED365 /* Info.plist */,
+				F06D7F5E25057922007872D0 /* LandingViewController.swift */,
+				F06D7F6025057B5E007872D0 /* CategoryCollectionViewCell.swift */,
+				F06D7F6225057C66007872D0 /* CategoryModels.swift */,
 			);
 			path = MirandaMall;
 			sourceTree = "<group>";
@@ -200,9 +206,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F06D7F6125057B5E007872D0 /* CategoryCollectionViewCell.swift in Sources */,
 				F0D330562504770F003ED365 /* ViewController.swift in Sources */,
+				F06D7F5F25057922007872D0 /* LandingViewController.swift in Sources */,
+				F06D7F6325057C66007872D0 /* CategoryModels.swift in Sources */,
 				F0D330522504770F003ED365 /* AppDelegate.swift in Sources */,
-				F0D330542504770F003ED365 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
