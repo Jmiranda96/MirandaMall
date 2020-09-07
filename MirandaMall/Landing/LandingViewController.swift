@@ -20,10 +20,12 @@ class LandingViewController: UIViewController {
         return [mock1,mock2,mock3,mock4,mock1,mock2,mock3,mock4]
     }()
     
+    let mlServices = MLServices()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.mlServices.fetchCategories()
         self.categoryCollection.dataSource = self
         self.categoryCollection.delegate = self
         
