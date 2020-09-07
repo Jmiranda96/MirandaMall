@@ -20,19 +20,14 @@ class LandingViewController: UIViewController, LandingDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.model.delegate = self
-        self.model.getCategories()
         self.categoryCollection.dataSource = self
         self.categoryCollection.delegate = self
         
-        // Do any additional setup after loading the view.
+        // Call to get the categories from services
+        self.model.getCategories()
     }
     
-//    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-//        if let layout = categoryCollection.collectionViewLayout as? UICollectionViewFlowLayout {
-//            layout.invalidateLayout()
-//        }
-//    }
-    
+    // function called to update size of CollectionViewCells after change of orientation
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if let layout = categoryCollection.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -51,7 +46,10 @@ class LandingViewController: UIViewController, LandingDelegate {
     }
     */
     
+    
+    // MARK: - LandingDelegate
     func setCategories() {
+        //update of category list in main thread
         DispatchQueue.main.async {
             self.categoryCollection.reloadData()
         }
@@ -60,6 +58,7 @@ class LandingViewController: UIViewController, LandingDelegate {
 }
 
 
+// MARK: - UICollectionViewDelegate
 
 extension LandingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

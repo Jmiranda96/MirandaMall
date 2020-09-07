@@ -28,6 +28,7 @@ class MLServices {
         self.regionCode = serverRegion
     }
     
+    /// function to fetch list of categories available in region
     func fetchCategories(closure: @escaping  ([MLCategoryDetails]) -> Void) {
         AF.request("\(self.mlUrl)sites/\(self.regionCode)/categories").responseDecodable(of: [MLCategoryDetails].self) { (response) in
             
@@ -38,6 +39,7 @@ class MLServices {
         }
     }
     
+    /// fetch detail of category by his id
     func fetchDetailCategory(_ id: String, closure: @escaping  (MLCategoryDetails) -> Void) {
         AF.request("\(self.mlUrl)categories/\(id)").responseDecodable(of: MLCategoryDetails.self) { (response) in
 
@@ -47,6 +49,7 @@ class MLServices {
             closure(details)
         }
     }
+    
     struct MLCategoryDetails: Decodable {
         var id: String
         var name: String
