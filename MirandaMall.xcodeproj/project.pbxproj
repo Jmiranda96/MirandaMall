@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AF9E955DA767C5B35E22940F /* Pods_MirandaMallTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2488EC411ACC5B0495553E7B /* Pods_MirandaMallTests.framework */; };
 		E633EF8D07C5036FEC4321EA /* Pods_MirandaMall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9C5244F2C84F27DC5C99EF7 /* Pods_MirandaMall.framework */; };
+		F0215B982505FB5C00E9D775 /* UrlImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0215B972505FB5C00E9D775 /* UrlImageView.swift */; };
 		F036F1C72505C8A900FFAA7D /* LandingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F036F1C62505C8A900FFAA7D /* LandingModel.swift */; };
 		F06D7F5F25057922007872D0 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06D7F5E25057922007872D0 /* LandingViewController.swift */; };
 		F06D7F6125057B5E007872D0 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06D7F6025057B5E007872D0 /* CategoryCollectionViewCell.swift */; };
@@ -37,6 +38,7 @@
 		7257E14066940C4701374319 /* Pods-MirandaMall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MirandaMall.debug.xcconfig"; path = "Target Support Files/Pods-MirandaMall/Pods-MirandaMall.debug.xcconfig"; sourceTree = "<group>"; };
 		D94E2FDF8934EFC243585406 /* Pods-MirandaMallTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MirandaMallTests.release.xcconfig"; path = "Target Support Files/Pods-MirandaMallTests/Pods-MirandaMallTests.release.xcconfig"; sourceTree = "<group>"; };
 		D9C5244F2C84F27DC5C99EF7 /* Pods_MirandaMall.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MirandaMall.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0215B972505FB5C00E9D775 /* UrlImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlImageView.swift; sourceTree = "<group>"; };
 		F036F1C62505C8A900FFAA7D /* LandingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingModel.swift; sourceTree = "<group>"; };
 		F06D7F5E25057922007872D0 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		F06D7F6025057B5E007872D0 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -83,6 +85,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F0215B962505FB2900E9D775 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F0215B972505FB5C00E9D775 /* UrlImageView.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		F06D7F642505A520007872D0 /* Landing */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +134,7 @@
 		F0D330502504770F003ED365 /* MirandaMall */ = {
 			isa = PBXGroup;
 			children = (
+				F0215B962505FB2900E9D775 /* Utilities */,
 				F06D7F652505A531007872D0 /* Services */,
 				F06D7F642505A520007872D0 /* Landing */,
 				F0D330512504770F003ED365 /* AppDelegate.swift */,
@@ -323,6 +334,7 @@
 			files = (
 				F06D7F6125057B5E007872D0 /* CategoryCollectionViewCell.swift in Sources */,
 				F06D7F5F25057922007872D0 /* LandingViewController.swift in Sources */,
+				F0215B982505FB5C00E9D775 /* UrlImageView.swift in Sources */,
 				F036F1C72505C8A900FFAA7D /* LandingModel.swift in Sources */,
 				F0D330522504770F003ED365 /* AppDelegate.swift in Sources */,
 				F06D7F672505A58B007872D0 /* MLServices.swift in Sources */,

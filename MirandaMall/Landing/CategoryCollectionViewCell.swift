@@ -10,7 +10,7 @@ import UIKit
 
 class CategoryCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var mainImage: UIImageView!
+    @IBOutlet weak var mainImage: UrlImageView!
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
@@ -38,6 +38,12 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     func updateUI() {
         if let info = catInfo {
             self.mainLabel.text = info.name
+            guard let imgUrl = catInfo?.picture else {
+                self.loader.startAnimating()
+                return
+            }
+            self.loader.stopAnimating()
+            self.mainImage.loadImageFromUrl(imgUrl)
         }
     }
     

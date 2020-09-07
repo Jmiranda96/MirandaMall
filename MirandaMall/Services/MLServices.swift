@@ -50,7 +50,7 @@ class MLServices {
     struct MLCategoryDetails: Decodable {
         var id: String
         var name: String
-        var picture: String? = ""
+        var picture: String?
     }
     
 }
