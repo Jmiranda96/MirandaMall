@@ -15,7 +15,6 @@ class UrlImageView: UIImageView {
     let imageCache = NSCache<NSString, UIImage>()
     var imageUrlString = String()
     
-    
     func loadImageFromUrl(_ urlString: String){
         imageUrlString = urlString
         
@@ -33,7 +32,10 @@ class UrlImageView: UIImageView {
             
             if let data = response.value {
                 let imageToCache = UIImage(data: data)
-                
+                guard imageToCache != nil else {
+                    self.image = UIImage(named: "MMLogo")
+                    return
+                }
                 DispatchQueue.main.async {
                     if self.imageUrlString == urlString {
                         self.image = imageToCache
