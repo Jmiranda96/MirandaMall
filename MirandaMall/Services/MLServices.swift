@@ -28,40 +28,29 @@ class MLServices {
         self.regionCode = serverRegion
     }
     
-    // fetch categories available for MCO region
-    func fetchCategories() {
-        AF.request("\(self.mlUrl)sites/\(self.regionCode)/categories").responseDecodable(of: [MLCategoryInfo].self) { (response) in
+    func fetchCategories(closure: @escaping  ([MLCategoryDetails]) -> Void) {
+        AF.request("\(self.mlUrl)sites/\(self.regionCode)/categories").responseDecodable(of: [MLCategoryDetails].self) { (response) in
             
             guard response.error == nil else { return }
             
             guard let categories = response.value else { return }
-            
-            self.fetchDetailCategory(categories.first!.id)
-            
+            closure(categories)
         }
     }
     
-    //fetch info from a category ID
-    func fetchDetailCategory(_ id: String) {
+    func fetchDetailCategory(_ id: String, closure: @escaping  (MLCategoryDetails) -> Void) {
         AF.request("\(self.mlUrl)categories/\(id)").responseDecodable(of: MLCategoryDetails.self) { (response) in
-            
+
             guard response.error == nil else { return }
             
             guard let details = response.value else { return }
-           
-            print(details)
+            closure(details)
         }
     }
-    
-    struct MLCategoryInfo: Decodable {
-        var id: String
-        var name: String
-    }
-    
     struct MLCategoryDetails: Decodable {
         var id: String
         var name: String
-        var picture: String
+        var picture: String? = ""
     }
     
 }

@@ -13,18 +13,31 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var mainImage: UIImageView!
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var overlayView: UIView!
+    @IBOutlet weak var loader: UIActivityIndicatorView!
     
-    var catInfo: categoryInfo! {
+    var catInfo: MLServices.MLCategoryDetails? {
         didSet {
             self.updateUI()
         }
     }
     
+    override func awakeFromNib() {
+        setup()
+    }
+    
+    override func prepareForReuse() {
+        self.loader.startAnimating()
+        self.mainImage.image = nil
+    }
+    
+    func setup() {
+        self.loader.hidesWhenStopped = true
+        self.loader.startAnimating()
+    }
     
     func updateUI() {
-        if let _ = catInfo {
-            self.mainImage.image = catInfo.image
-            self.mainLabel.text = catInfo.Title
+        if let info = catInfo {
+            self.mainLabel.text = info.name
         }
     }
     

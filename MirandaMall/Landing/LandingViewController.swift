@@ -8,24 +8,19 @@
 
 import UIKit
 
-class LandingViewController: UIViewController {
+class LandingViewController: UIViewController, LandingDelegate {
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var categoryCollection: UICollectionView!
     
-    let mockInfo: [categoryInfo] = {
-        let mock1 = categoryInfo(Title: "Cat1", image: UIImage(named: "Agro")!)
-        let mock2 = categoryInfo(Title: "Cat2", image: UIImage(named: "Alimentos")!)
-        let mock3 = categoryInfo(Title: "Cat3", image: UIImage(named: "Mascotas")!)
-        let mock4 = categoryInfo(Title: "Cat4", image: UIImage(named: "AutosAccesorios")!)
-        return [mock1,mock2,mock3,mock4,mock1,mock2,mock3,mock4]
-    }()
-    
     let mlServices = MLServices()
+    let model = LandingModel()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mlServices.fetchCategories()
+        self.model.delegate = self
+        self.model.getCategories()
         self.categoryCollection.dataSource = self
         self.categoryCollection.delegate = self
         
@@ -55,6 +50,12 @@ class LandingViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func setCategories() {
+        DispatchQueue.main.async {
+            self.categoryCollection.reloadData()
+        }
+    }
 
 }
 
@@ -62,12 +63,18 @@ class LandingViewController: UIViewController {
 
 extension LandingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.mockInfo.count
+        
+        return self.model.catList.count > 0 ? self.model.catList.count : 8
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! CategoryCollectionViewCell
-        cell.catInfo = self.mockInfo[indexPath.row]
+        
+        guard self.model.catList.count > 0 else {
+            return cell
+        }
+        cell.catInfo = self.model.catList[indexPath.row]
         return cell
     }
 }
