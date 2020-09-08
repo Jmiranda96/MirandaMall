@@ -3,15 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF9E955DA767C5B35E22940F /* Pods_MirandaMallTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2488EC411ACC5B0495553E7B /* Pods_MirandaMallTests.framework */; };
+		E633EF8D07C5036FEC4321EA /* Pods_MirandaMall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9C5244F2C84F27DC5C99EF7 /* Pods_MirandaMall.framework */; };
+		F0215B982505FB5C00E9D775 /* UrlImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0215B972505FB5C00E9D775 /* UrlImageView.swift */; };
+		F0215B9A2506102100E9D775 /* ServicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0215B992506102100E9D775 /* ServicesTests.swift */; };
+		F02DCD86250734510088E96E /* LandingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02DCD85250734510088E96E /* LandingTests.swift */; };
+		F036F1C72505C8A900FFAA7D /* LandingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F036F1C62505C8A900FFAA7D /* LandingModel.swift */; };
 		F06D7F5F25057922007872D0 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06D7F5E25057922007872D0 /* LandingViewController.swift */; };
 		F06D7F6125057B5E007872D0 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06D7F6025057B5E007872D0 /* CategoryCollectionViewCell.swift */; };
-		F06D7F6325057C66007872D0 /* CategoryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06D7F6225057C66007872D0 /* CategoryModels.swift */; };
+		F06D7F672505A58B007872D0 /* MLServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06D7F662505A58B007872D0 /* MLServices.swift */; };
 		F0D330522504770F003ED365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D330512504770F003ED365 /* AppDelegate.swift */; };
-		F0D330562504770F003ED365 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D330552504770F003ED365 /* ViewController.swift */; };
 		F0D330592504770F003ED365 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0D330572504770F003ED365 /* Main.storyboard */; };
 		F0D3305B25047719003ED365 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0D3305A25047719003ED365 /* Assets.xcassets */; };
 		F0D3305E25047719003ED365 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0D3305C25047719003ED365 /* LaunchScreen.storyboard */; };
@@ -29,12 +34,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2488EC411ACC5B0495553E7B /* Pods_MirandaMallTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MirandaMallTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30C69BB57DC81F5B1FA24438 /* Pods-MirandaMall.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MirandaMall.release.xcconfig"; path = "Target Support Files/Pods-MirandaMall/Pods-MirandaMall.release.xcconfig"; sourceTree = "<group>"; };
+		349A01919283C473D1450A97 /* Pods-MirandaMallTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MirandaMallTests.debug.xcconfig"; path = "Target Support Files/Pods-MirandaMallTests/Pods-MirandaMallTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7257E14066940C4701374319 /* Pods-MirandaMall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MirandaMall.debug.xcconfig"; path = "Target Support Files/Pods-MirandaMall/Pods-MirandaMall.debug.xcconfig"; sourceTree = "<group>"; };
+		D94E2FDF8934EFC243585406 /* Pods-MirandaMallTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MirandaMallTests.release.xcconfig"; path = "Target Support Files/Pods-MirandaMallTests/Pods-MirandaMallTests.release.xcconfig"; sourceTree = "<group>"; };
+		D9C5244F2C84F27DC5C99EF7 /* Pods_MirandaMall.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MirandaMall.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0215B972505FB5C00E9D775 /* UrlImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlImageView.swift; sourceTree = "<group>"; };
+		F0215B992506102100E9D775 /* ServicesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesTests.swift; sourceTree = "<group>"; };
+		F02DCD85250734510088E96E /* LandingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingTests.swift; sourceTree = "<group>"; };
+		F036F1C62505C8A900FFAA7D /* LandingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingModel.swift; sourceTree = "<group>"; };
 		F06D7F5E25057922007872D0 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		F06D7F6025057B5E007872D0 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
-		F06D7F6225057C66007872D0 /* CategoryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModels.swift; sourceTree = "<group>"; };
+		F06D7F662505A58B007872D0 /* MLServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLServices.swift; sourceTree = "<group>"; };
 		F0D3304E2504770F003ED365 /* MirandaMall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MirandaMall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0D330512504770F003ED365 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F0D330552504770F003ED365 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F0D330582504770F003ED365 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F0D3305A25047719003ED365 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0D3305D25047719003ED365 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E633EF8D07C5036FEC4321EA /* Pods_MirandaMall.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,18 +71,58 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9E955DA767C5B35E22940F /* Pods_MirandaMallTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD68708BA2454C1CE502A82E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7257E14066940C4701374319 /* Pods-MirandaMall.debug.xcconfig */,
+				30C69BB57DC81F5B1FA24438 /* Pods-MirandaMall.release.xcconfig */,
+				349A01919283C473D1450A97 /* Pods-MirandaMallTests.debug.xcconfig */,
+				D94E2FDF8934EFC243585406 /* Pods-MirandaMallTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F0215B962505FB2900E9D775 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F0215B972505FB5C00E9D775 /* UrlImageView.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F06D7F642505A520007872D0 /* Landing */ = {
+			isa = PBXGroup;
+			children = (
+				F06D7F5E25057922007872D0 /* LandingViewController.swift */,
+				F06D7F6025057B5E007872D0 /* CategoryCollectionViewCell.swift */,
+				F036F1C62505C8A900FFAA7D /* LandingModel.swift */,
+			);
+			path = Landing;
+			sourceTree = "<group>";
+		};
+		F06D7F652505A531007872D0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F06D7F662505A58B007872D0 /* MLServices.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		F0D330452504770E003ED365 = {
 			isa = PBXGroup;
 			children = (
 				F0D330502504770F003ED365 /* MirandaMall */,
 				F0D330672504771A003ED365 /* MirandaMallTests */,
 				F0D3304F2504770F003ED365 /* Products */,
+				CD68708BA2454C1CE502A82E /* Pods */,
+				FA7A266D3974D0F61B81CB55 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,15 +138,14 @@
 		F0D330502504770F003ED365 /* MirandaMall */ = {
 			isa = PBXGroup;
 			children = (
+				F0215B962505FB2900E9D775 /* Utilities */,
+				F06D7F652505A531007872D0 /* Services */,
+				F06D7F642505A520007872D0 /* Landing */,
 				F0D330512504770F003ED365 /* AppDelegate.swift */,
-				F0D330552504770F003ED365 /* ViewController.swift */,
 				F0D330572504770F003ED365 /* Main.storyboard */,
 				F0D3305A25047719003ED365 /* Assets.xcassets */,
 				F0D3305C25047719003ED365 /* LaunchScreen.storyboard */,
 				F0D3305F25047719003ED365 /* Info.plist */,
-				F06D7F5E25057922007872D0 /* LandingViewController.swift */,
-				F06D7F6025057B5E007872D0 /* CategoryCollectionViewCell.swift */,
-				F06D7F6225057C66007872D0 /* CategoryModels.swift */,
 			);
 			path = MirandaMall;
 			sourceTree = "<group>";
@@ -99,10 +153,21 @@
 		F0D330672504771A003ED365 /* MirandaMallTests */ = {
 			isa = PBXGroup;
 			children = (
+				F02DCD85250734510088E96E /* LandingTests.swift */,
+				F0215B992506102100E9D775 /* ServicesTests.swift */,
 				F0D330682504771A003ED365 /* MirandaMallTests.swift */,
 				F0D3306A2504771A003ED365 /* Info.plist */,
 			);
 			path = MirandaMallTests;
+			sourceTree = "<group>";
+		};
+		FA7A266D3974D0F61B81CB55 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D9C5244F2C84F27DC5C99EF7 /* Pods_MirandaMall.framework */,
+				2488EC411ACC5B0495553E7B /* Pods_MirandaMallTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,9 +177,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0D3306D2504771A003ED365 /* Build configuration list for PBXNativeTarget "MirandaMall" */;
 			buildPhases = (
+				64AD56D7CC7DE8A1CB003855 /* [CP] Check Pods Manifest.lock */,
 				F0D3304A2504770F003ED365 /* Sources */,
 				F0D3304B2504770F003ED365 /* Frameworks */,
 				F0D3304C2504770F003ED365 /* Resources */,
+				9AEDF5742CEC1F52213C51B3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +196,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0D330702504771A003ED365 /* Build configuration list for PBXNativeTarget "MirandaMallTests" */;
 			buildPhases = (
+				7F4CA6BD44EAE5283B9006E1 /* [CP] Check Pods Manifest.lock */,
 				F0D330602504771A003ED365 /* Sources */,
 				F0D330612504771A003ED365 /* Frameworks */,
 				F0D330622504771A003ED365 /* Resources */,
@@ -201,16 +269,81 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		64AD56D7CC7DE8A1CB003855 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MirandaMall-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F4CA6BD44EAE5283B9006E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MirandaMallTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9AEDF5742CEC1F52213C51B3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MirandaMall/Pods-MirandaMall-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MirandaMall/Pods-MirandaMall-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MirandaMall/Pods-MirandaMall-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F0D3304A2504770F003ED365 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F06D7F6125057B5E007872D0 /* CategoryCollectionViewCell.swift in Sources */,
-				F0D330562504770F003ED365 /* ViewController.swift in Sources */,
 				F06D7F5F25057922007872D0 /* LandingViewController.swift in Sources */,
-				F06D7F6325057C66007872D0 /* CategoryModels.swift in Sources */,
+				F0215B982505FB5C00E9D775 /* UrlImageView.swift in Sources */,
+				F036F1C72505C8A900FFAA7D /* LandingModel.swift in Sources */,
 				F0D330522504770F003ED365 /* AppDelegate.swift in Sources */,
+				F06D7F672505A58B007872D0 /* MLServices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +352,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0D330692504771A003ED365 /* MirandaMallTests.swift in Sources */,
+				F02DCD86250734510088E96E /* LandingTests.swift in Sources */,
+				F0215B9A2506102100E9D775 /* ServicesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +503,7 @@
 		};
 		F0D3306E2504771A003ED365 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7257E14066940C4701374319 /* Pods-MirandaMall.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -386,6 +522,7 @@
 		};
 		F0D3306F2504771A003ED365 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30C69BB57DC81F5B1FA24438 /* Pods-MirandaMall.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -404,6 +541,7 @@
 		};
 		F0D330712504771A003ED365 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 349A01919283C473D1450A97 /* Pods-MirandaMallTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -426,6 +564,7 @@
 		};
 		F0D330722504771A003ED365 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D94E2FDF8934EFC243585406 /* Pods-MirandaMallTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
