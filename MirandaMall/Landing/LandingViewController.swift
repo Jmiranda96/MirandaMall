@@ -18,6 +18,7 @@ class LandingViewController: UIViewController, LandingDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.model.delegate = self
+        self.searchBar.delegate = self
         self.categoryCollection.dataSource = self
         self.categoryCollection.delegate = self
         
@@ -33,18 +34,6 @@ class LandingViewController: UIViewController, LandingDelegate {
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    
     // MARK: - LandingDelegate
     func setCategories() {
         //update of category list in main thread
@@ -52,7 +41,25 @@ class LandingViewController: UIViewController, LandingDelegate {
             self.categoryCollection.reloadData()
         }
     }
+    
+    // MARK: - Navigation
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ItemListViewController {
+            let senderInfo = sender as! [String:String?]
+            vc.url = (senderInfo["search"] ?? "NO URL")!
+        }
+    }
+
+}
+
+// MARK: - UISearchBarDelegate
+
+extension LandingViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // perform segue to item list page with the search query in the sender
+        self.performSegue(withIdentifier: "showItemsList", sender: ["search":searchBar.text])
+    }
 }
 
 

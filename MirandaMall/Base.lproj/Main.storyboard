@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ya4-SX-4BJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6L0-6z-AaY">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -8,6 +8,21 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="eqC-Ew-XGy">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="6L0-6z-AaY" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NqH-kF-v0I">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ya4-SX-4BJ" kind="relationship" relationship="rootViewController" id="QC4-mj-oYE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J75-PR-FSb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="501" y="110"/>
+        </scene>
         <!--Landing View Controller-->
         <scene sceneID="KDU-fL-AHt">
             <objects>
@@ -19,7 +34,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="9RA-DR-C2c">
                                 <rect key="frame" x="0.0" y="206" width="414" height="484"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gFJ-HE-dMs">
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="gFJ-HE-dMs">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
@@ -103,14 +118,73 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3nh-9w-SGd"/>
                     </view>
+                    <navigationItem key="navigationItem" id="cbT-Bs-rwh"/>
                     <connections>
                         <outlet property="categoryCollection" destination="bJt-vh-vAL" id="PWy-o5-Xss"/>
                         <outlet property="searchBar" destination="gFJ-HE-dMs" id="S7C-is-Wec"/>
+                        <segue destination="Bom-kM-ykL" kind="show" identifier="showItemsList" id="b3U-zC-QxG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nFU-sv-Gsh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1160.8695652173915" y="109.82142857142857"/>
+            <point key="canvasLocation" x="1377" y="110"/>
+        </scene>
+        <!--Item List View Controller-->
+        <scene sceneID="56p-rV-uNK">
+            <objects>
+                <viewController id="Bom-kM-ykL" customClass="ItemListViewController" customModule="MirandaMall" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dFU-wV-nJp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCK-nO-fAZ">
+                                <rect key="frame" x="175" y="432" width="64" height="32.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="gfz-9v-wsm">
+                                <rect key="frame" x="56" y="44" width="358" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UP1-XO-hg2">
+                                <rect key="frame" x="0.0" y="44" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="UP1-XO-hg2" secondAttribute="height" multiplier="1:1" id="1Wx-As-cQU"/>
+                                </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" image="chevron.left" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressBack:" destination="Bom-kM-ykL" eventType="touchUpInside" id="nhq-y5-iso"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="DCK-nO-fAZ" firstAttribute="centerX" secondItem="dFU-wV-nJp" secondAttribute="centerX" id="9C6-aC-F3A"/>
+                            <constraint firstItem="gfz-9v-wsm" firstAttribute="top" secondItem="7dX-DU-Eme" secondAttribute="top" id="GFw-Rp-ra3"/>
+                            <constraint firstItem="gfz-9v-wsm" firstAttribute="leading" secondItem="UP1-XO-hg2" secondAttribute="trailing" id="HxM-WV-uuW"/>
+                            <constraint firstItem="DCK-nO-fAZ" firstAttribute="centerY" secondItem="dFU-wV-nJp" secondAttribute="centerY" id="L0A-Iq-tFX"/>
+                            <constraint firstItem="UP1-XO-hg2" firstAttribute="leading" secondItem="7dX-DU-Eme" secondAttribute="leading" id="WPn-99-iDe"/>
+                            <constraint firstItem="gfz-9v-wsm" firstAttribute="trailing" secondItem="7dX-DU-Eme" secondAttribute="trailing" id="dZB-LV-ATz"/>
+                            <constraint firstItem="UP1-XO-hg2" firstAttribute="bottom" secondItem="gfz-9v-wsm" secondAttribute="bottom" id="kYD-jD-xak"/>
+                            <constraint firstItem="UP1-XO-hg2" firstAttribute="top" secondItem="gfz-9v-wsm" secondAttribute="top" id="qC4-kt-ONH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7dX-DU-Eme"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="u3W-3s-dhi"/>
+                    <connections>
+                        <outlet property="urlLabel" destination="DCK-nO-fAZ" id="L4D-f5-9m3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g6X-fw-LKd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2305.7971014492755" y="109.82142857142857"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
+    </resources>
 </document>
