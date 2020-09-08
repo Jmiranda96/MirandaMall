@@ -13,9 +13,7 @@ class LandingViewController: UIViewController, LandingDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var categoryCollection: UICollectionView!
     
-    let mlServices = MLServices()
-    let model = LandingModel()
-    
+    let model: LandingModel = LandingModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

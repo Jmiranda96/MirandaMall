@@ -14,7 +14,7 @@ class MLServices {
     let regionCode: String
     let mlUrl: String
     
-    var sessionManager: Session!
+    var sessionManager: Session?
     
     enum RequestError: Error {
         case invalidStatus
@@ -50,7 +50,12 @@ class MLServices {
     /// function to fetch list of categories available in region
     func fetchCategories(closure: @escaping  ([MLCategoryDetails]?, RequestError?) -> Void) {
         
-        sessionManager.request("\(self.mlUrl)sites/\(self.regionCode)/categories").responseDecodable(of: [MLCategoryDetails].self) { (response) in
+        guard let session = sessionManager else {
+            print("NIL SESSION MANAGER")
+            return
+        }
+        
+        session.request("\(self.mlUrl)sites/\(self.regionCode)/categories").responseDecodable(of: [MLCategoryDetails].self) { (response) in
             
             guard response.response?.statusCode == 200 else {
                 closure( nil, RequestError.invalidStatus)
@@ -69,7 +74,13 @@ class MLServices {
     
     /// fetch detail of category by his id
     func fetchDetailCategory(_ id: String, closure: @escaping  (MLCategoryDetails?, RequestError?) -> Void) {
-        sessionManager.request("\(self.mlUrl)categories/\(id)").responseDecodable(of: MLCategoryDetails.self) { (response) in
+        
+        guard let session = sessionManager else {
+            print("NIL SESSION MANAGER")
+            return
+        }
+        
+        session.request("\(self.mlUrl)categories/\(id)").responseDecodable(of: MLCategoryDetails.self) { (response) in
 
             guard response.response?.statusCode == 200 else {
                 closure( nil, RequestError.invalidStatus)
