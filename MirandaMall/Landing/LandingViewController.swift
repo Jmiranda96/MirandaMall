@@ -47,7 +47,14 @@ class LandingViewController: UIViewController, LandingDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ItemListViewController {
             let senderInfo = sender as! [String:String?]
-            vc.url = (senderInfo["search"] ?? "NO URL")!
+            
+            if let searchQuery = senderInfo["search"]  {
+                vc.url = searchQuery!
+            }
+            
+            if let categoryQuery = senderInfo["id"] {
+                vc.categoryID = categoryQuery!
+            }
         }
     }
 
@@ -80,6 +87,10 @@ extension LandingViewController: UICollectionViewDataSource {
         }
         cell.catInfo = self.model.catList[indexPath.row]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showItemsList", sender: ["id":self.model.catList[indexPath.row].id])
     }
 }
 

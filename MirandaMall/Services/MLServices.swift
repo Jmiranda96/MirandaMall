@@ -15,7 +15,8 @@ class MLServices {
     let mlUrl: String
     
     var sessionManager: Session?
-    
+    var offset = 0
+    var limit = 20
     enum RequestError: Error {
         case invalidStatus
         case errorInRequest
@@ -97,10 +98,60 @@ class MLServices {
         }
     }
     
+    
+    /// fetch list of items fetched by category and/or id
+    func fetchItems(byCategory cat: String = "", bySearch q: String = "", closure: @escaping  (MLISearchResponse?, RequestError?) -> Void ) {
+        guard let session = sessionManager else {
+            print("NIL SESSION MANAGER")
+            return
+        }
+        
+        let queryCat = cat.isEmpty ? "" : "category=\(cat)"
+        
+        let queryQ = q.isEmpty ? "" : "q=\(q)"
+        
+        let stringLimit = String(limit)
+        let stringOffset = String(offset)
+        
+         self.offset+=limit
+        
+        session.request("\(self.mlUrl)sites/\(self.regionCode)/search?\(queryCat)&\(queryQ)&offset=\(stringOffset)&limit=\(stringLimit)").responseDecodable(of: MLISearchResponse.self) { (response) in
+            
+            guard response.response?.statusCode == 200 else {
+                closure( nil, RequestError.invalidStatus)
+                return
+            }
+            
+            guard response.error == nil else {
+                closure( nil, RequestError.errorInRequest)
+                return
+            }
+            
+            guard let results = response.value else { return }
+            closure(results, nil)
+        }
+        
+    }
+    
+    //MARK: - data models
+    
     struct MLCategoryDetails: Codable, Equatable {
         var id: String? = ""
         var name: String? = ""
         var picture: String? = ""
+    }
+    
+    struct MLISearchResponse: Codable, Equatable {
+        var site_id: String? = ""
+        var query: String? = ""
+        var results: [MLSearchResult]?
+    }
+    
+    struct MLSearchResult: Codable, Equatable {
+        var id: String?
+        var title: String?
+        var price: Int?
+        var thumbnail: String?
     }
     
 }
