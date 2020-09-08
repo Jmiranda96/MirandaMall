@@ -14,7 +14,22 @@ class MLServices {
     let regionCode: String
     let mlUrl: String
     
-    init() {
+    var sessionManager: Session!
+    
+    enum RequestError: Error {
+        case invalidStatus
+        case errorInRequest
+        var errorDescription: String? {
+            switch self {
+            case .invalidStatus:
+                return "invalidStatus"
+            case .errorInRequest:
+                return "errorInRequest"
+            }
+        }
+    }
+    
+    init(session: Session? = Session()) {
         // get url direction from info.plist
         guard let serverUrl = Bundle.main.infoDictionary?["ml-api-url"] as? String  else {
             fatalError("ML api direction not found")
@@ -26,34 +41,55 @@ class MLServices {
             fatalError("ML api region not found")
         }
         self.regionCode = serverRegion
+        
+        // Init of session manager (mock purposes)
+        
+        self.sessionManager = session
     }
     
     /// function to fetch list of categories available in region
-    func fetchCategories(closure: @escaping  ([MLCategoryDetails]) -> Void) {
-        AF.request("\(self.mlUrl)sites/\(self.regionCode)/categories").responseDecodable(of: [MLCategoryDetails].self) { (response) in
+    func fetchCategories(closure: @escaping  ([MLCategoryDetails]?, RequestError?) -> Void) {
+        
+        sessionManager.request("\(self.mlUrl)sites/\(self.regionCode)/categories").responseDecodable(of: [MLCategoryDetails].self) { (response) in
             
-            guard response.error == nil else { return }
+            guard response.response?.statusCode == 200 else {
+                closure( nil, RequestError.invalidStatus)
+                return
+            }
+            
+            guard response.error == nil else {
+                closure( nil, RequestError.errorInRequest)
+                return
+            }
             
             guard let categories = response.value else { return }
-            closure(categories)
+            closure(categories, nil)
         }
     }
     
     /// fetch detail of category by his id
-    func fetchDetailCategory(_ id: String, closure: @escaping  (MLCategoryDetails) -> Void) {
-        AF.request("\(self.mlUrl)categories/\(id)").responseDecodable(of: MLCategoryDetails.self) { (response) in
+    func fetchDetailCategory(_ id: String, closure: @escaping  (MLCategoryDetails?, RequestError?) -> Void) {
+        sessionManager.request("\(self.mlUrl)categories/\(id)").responseDecodable(of: MLCategoryDetails.self) { (response) in
 
-            guard response.error == nil else { return }
+            guard response.response?.statusCode == 200 else {
+                closure( nil, RequestError.invalidStatus)
+                return
+            }
+            
+            guard response.error == nil else {
+                closure( nil, RequestError.errorInRequest)
+                return
+            }
             
             guard let details = response.value else { return }
-            closure(details)
+            closure(details, nil)
         }
     }
     
-    struct MLCategoryDetails: Decodable {
-        var id: String
-        var name: String
-        var picture: String?
+    struct MLCategoryDetails: Codable, Equatable {
+        var id: String? = ""
+        var name: String? = ""
+        var picture: String? = ""
     }
     
 }

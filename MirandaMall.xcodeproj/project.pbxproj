@@ -10,6 +10,8 @@
 		AF9E955DA767C5B35E22940F /* Pods_MirandaMallTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2488EC411ACC5B0495553E7B /* Pods_MirandaMallTests.framework */; };
 		E633EF8D07C5036FEC4321EA /* Pods_MirandaMall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9C5244F2C84F27DC5C99EF7 /* Pods_MirandaMall.framework */; };
 		F0215B982505FB5C00E9D775 /* UrlImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0215B972505FB5C00E9D775 /* UrlImageView.swift */; };
+		F0215B9A2506102100E9D775 /* ServicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0215B992506102100E9D775 /* ServicesTests.swift */; };
+		F02DCD86250734510088E96E /* LandingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02DCD85250734510088E96E /* LandingTests.swift */; };
 		F036F1C72505C8A900FFAA7D /* LandingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F036F1C62505C8A900FFAA7D /* LandingModel.swift */; };
 		F06D7F5F25057922007872D0 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06D7F5E25057922007872D0 /* LandingViewController.swift */; };
 		F06D7F6125057B5E007872D0 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06D7F6025057B5E007872D0 /* CategoryCollectionViewCell.swift */; };
@@ -39,6 +41,8 @@
 		D94E2FDF8934EFC243585406 /* Pods-MirandaMallTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MirandaMallTests.release.xcconfig"; path = "Target Support Files/Pods-MirandaMallTests/Pods-MirandaMallTests.release.xcconfig"; sourceTree = "<group>"; };
 		D9C5244F2C84F27DC5C99EF7 /* Pods_MirandaMall.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MirandaMall.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0215B972505FB5C00E9D775 /* UrlImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlImageView.swift; sourceTree = "<group>"; };
+		F0215B992506102100E9D775 /* ServicesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesTests.swift; sourceTree = "<group>"; };
+		F02DCD85250734510088E96E /* LandingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingTests.swift; sourceTree = "<group>"; };
 		F036F1C62505C8A900FFAA7D /* LandingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingModel.swift; sourceTree = "<group>"; };
 		F06D7F5E25057922007872D0 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		F06D7F6025057B5E007872D0 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -149,6 +153,8 @@
 		F0D330672504771A003ED365 /* MirandaMallTests */ = {
 			isa = PBXGroup;
 			children = (
+				F02DCD85250734510088E96E /* LandingTests.swift */,
+				F0215B992506102100E9D775 /* ServicesTests.swift */,
 				F0D330682504771A003ED365 /* MirandaMallTests.swift */,
 				F0D3306A2504771A003ED365 /* Info.plist */,
 			);
@@ -346,6 +352,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0D330692504771A003ED365 /* MirandaMallTests.swift in Sources */,
+				F02DCD86250734510088E96E /* LandingTests.swift in Sources */,
+				F0215B9A2506102100E9D775 /* ServicesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

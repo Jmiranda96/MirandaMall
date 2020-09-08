@@ -11,7 +11,7 @@
         <!--Landing View Controller-->
         <scene sceneID="KDU-fL-AHt">
             <objects>
-                <viewController id="ya4-SX-4BJ" customClass="LandingViewController" customModule="MirandaMall" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LandingViewController" id="ya4-SX-4BJ" customClass="LandingViewController" customModule="MirandaMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o3W-32-Wuu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
