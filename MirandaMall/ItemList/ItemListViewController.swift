@@ -13,7 +13,7 @@ class ItemListViewController: UIViewController, ItemListDelegate {
     
     @IBOutlet weak var itemListTableView: UITableView!
     var url = String()
-    var categoryID = String()
+    var categoryInfo = MLServices.MLCategoryDetails()
     
     var model = ItemListModel()
     
@@ -26,7 +26,8 @@ class ItemListViewController: UIViewController, ItemListDelegate {
         self.itemListTableView.delegate = self
         self.model.delegate = self
         
-        self.model.getItems(byCategory: categoryID, bySearch: url)
+        //the items list is fetched by the category and/or search text
+        self.model.getItems(byCategory: categoryInfo.id!, bySearch: url)
     }
     
 
@@ -63,6 +64,16 @@ extension ItemListViewController: UISearchBarDelegate {
 
 extension ItemListViewController: UITableViewDataSource {
    
+    
+    // Check if the categoryInfo is provided to display header in section with the name of the category searched
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return categoryInfo.id!.isEmpty ? "" : categoryInfo.name
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return categoryInfo.id!.isEmpty ? 0 : 30
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }

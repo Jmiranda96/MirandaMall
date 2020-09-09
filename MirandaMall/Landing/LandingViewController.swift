@@ -46,14 +46,19 @@ class LandingViewController: UIViewController, LandingDelegate {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ItemListViewController {
-            let senderInfo = sender as! [String:String?]
             
-            if let searchQuery = senderInfo["search"]  {
-                vc.url = searchQuery!
+            // Check the format of sender to config the variables for next Vc
+            
+            if let senderInfo = sender as? [String:String?] {
+                if let searchQuery = senderInfo["search"]  {
+                    vc.url = searchQuery!
+                }
             }
             
-            if let categoryQuery = senderInfo["id"] {
-                vc.categoryID = categoryQuery!
+            if let senderInfo = sender as? [String:MLServices.MLCategoryDetails] {
+                if let categoryQuery = senderInfo["catInfo"] {
+                    vc.categoryInfo = categoryQuery
+                }
             }
         }
     }
@@ -65,6 +70,7 @@ class LandingViewController: UIViewController, LandingDelegate {
 extension LandingViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // perform segue to item list page with the search query in the sender
+        guard !searchBar.text!.isEmpty else {return}
         self.performSegue(withIdentifier: "showItemsList", sender: ["search":searchBar.text])
     }
 }
@@ -90,7 +96,7 @@ extension LandingViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "showItemsList", sender: ["id":self.model.catList[indexPath.row].id])
+        self.performSegue(withIdentifier: "showItemsList", sender: ["catInfo":self.model.catList[indexPath.row]])
     }
 }
 
