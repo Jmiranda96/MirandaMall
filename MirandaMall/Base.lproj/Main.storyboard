@@ -231,6 +231,7 @@
                     <connections>
                         <outlet property="itemListTableView" destination="M8Q-MD-VPQ" id="uJz-7q-4ia"/>
                         <outlet property="searchBar" destination="gfz-9v-wsm" id="44k-pV-iHA"/>
+                        <outlet property="tableBottonConstraint" destination="l0S-vO-MIq" id="S9w-Le-mlC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g6X-fw-LKd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -24,6 +24,9 @@ class LandingViewController: UIViewController, LandingDelegate {
         
         // Call to get the categories from services
         self.model.getCategories()
+        
+        //tap gesture implemented to dismiss keyboard
+        self.dismissKeyboardOnTap()
     }
     
     // function called to update size of CollectionViewCells after change of orientation
