@@ -219,6 +219,26 @@
                                             <outlet property="loader" destination="v97-RD-P4X" id="Nhu-86-QdS"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadingCell" rowHeight="60" id="N3g-6Y-Xcg" customClass="LoadingTableViewCell" customModule="MirandaMall" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="148" width="414" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N3g-6Y-Xcg" id="99c-gy-0AZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="PWj-0C-wnd">
+                                                    <rect key="frame" x="188.5" y="11.5" width="37" height="37"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="PWj-0C-wnd" firstAttribute="centerX" secondItem="99c-gy-0AZ" secondAttribute="centerX" id="ZFC-bP-BAH"/>
+                                                <constraint firstItem="PWj-0C-wnd" firstAttribute="centerY" secondItem="99c-gy-0AZ" secondAttribute="centerY" id="yfk-oq-ZrL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="loader" destination="PWj-0C-wnd" id="OEH-TV-kUO"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>

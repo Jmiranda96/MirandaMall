@@ -16,6 +16,9 @@ class ItemListViewController: UIViewController, ItemListDelegate {
     
     var query = String()
     var categoryInfo = MLServices.MLCategoryDetails()
+    var isLoading = false
+    var loadMoreItems = true
+    
     
     var model = ItemListModel()
     
@@ -33,7 +36,7 @@ class ItemListViewController: UIViewController, ItemListDelegate {
         self.searchBar.placeholder = "Que quieres vitrinear?"
         
         //the items list is fetched by the category and/or search text
-        self.model.getItems(byCategory: categoryInfo.id!, bySearch: query)
+        self.getItems()
         
         //tap gesture implemented to dismiss keyboard
         self.dismissKeyboardOnTap()
@@ -53,9 +56,15 @@ class ItemListViewController: UIViewController, ItemListDelegate {
     }
     */
     
+    func getItems(newPage: Bool = false) {
+        loadMoreItems = true
+        self.model.getItems(byCategory: categoryInfo.id!, bySearch: query, newPage: newPage)
+    }
+    
     func setItems() {
         self.view.bringSubviewToFront(itemListTableView)
         self.itemListTableView.reloadData()
+        self.isLoading = false
     }
     
     func noResults(){
@@ -64,6 +73,11 @@ class ItemListViewController: UIViewController, ItemListDelegate {
     
     func errorInRequest(){
         self.showErrorView(icon: "errorIcon", msg: "Hubo un error inesperado. \n Intenta de nuevo :)")
+    }
+    
+    func stopLoader(){
+        loadMoreItems = false
+        self.itemListTableView.reloadData()
     }
     
     func showErrorView(icon: String, msg: String) {
@@ -139,7 +153,8 @@ class ItemListViewController: UIViewController, ItemListDelegate {
 extension ItemListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // perform segue to item list page with the search query in the sender
-        self.model.getItems(byCategory: categoryInfo.id!, bySearch: searchBar.text ?? "")
+        self.query = searchBar.text ?? ""
+        self.getItems()
         self.searchBar.searchTextField.resignFirstResponder()
     }
     
@@ -151,28 +166,54 @@ extension ItemListViewController: UISearchBarDelegate {
 
 // MARK: - UICollectionViewDelegate
 
-extension ItemListViewController: UITableViewDataSource {
+extension ItemListViewController: UITableViewDataSource, UITableViewDelegate {
    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return loadMoreItems ? 2 : 1
+    }
     
     // Check if the categoryInfo is provided to display header in section with the name of the category searched
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        guard section == 0 else { return nil }
+        
         return categoryInfo.id!.isEmpty ? "" : categoryInfo.name
+        
+        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        guard section == 0 else { return 0 }
+        
         return categoryInfo.id!.isEmpty ? 0 : 30
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        guard indexPath.section == 0 else { return 50 }
+        
         return 120
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return self.model.itemList.count > 0 ? self.model.itemList.count : 8
+        
+        guard section == 0 else { return 1 }
+        
+        return self.model.itemList.count > 0 ? self.model.itemList.count : 8
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard indexPath.section == 0 else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "loadingCell", for: indexPath) as! LoadingTableViewCell
+            cell.loader.startAnimating()
+            return cell
+        }
+        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemListCell", for: indexPath) as! ItemListTableViewCell
 
         guard self.model.itemList.count > 0 else {
@@ -185,10 +226,21 @@ extension ItemListViewController: UITableViewDataSource {
         return cell
     }
     
-    
-}
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        guard loadMoreItems else {return}
+        
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
 
-extension ItemListViewController: UITableViewDelegate {
+        if (offsetY > contentHeight - scrollView.frame.height * 2) && !isLoading {
+            self.isLoading = true
+            DispatchQueue.main.asyncAfter(deadline: .now()+2) {
+                self.getItems(newPage: true)
+            }
+        }
+    }
+    
     
 }
 

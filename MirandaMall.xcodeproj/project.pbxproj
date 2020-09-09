@@ -17,6 +17,7 @@
 		F036F1C72505C8A900FFAA7D /* LandingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F036F1C62505C8A900FFAA7D /* LandingModel.swift */; };
 		F05D921925088A7E00E307AC /* ItemListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D921825088A7E00E307AC /* ItemListTableViewCell.swift */; };
 		F05D921B25089F3900E307AC /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D921A25089F3900E307AC /* ViewControllerExtension.swift */; };
+		F05D921D2508BB6800E307AC /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D921C2508BB6800E307AC /* LoadingTableViewCell.swift */; };
 		F06D7F5F25057922007872D0 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06D7F5E25057922007872D0 /* LandingViewController.swift */; };
 		F06D7F6125057B5E007872D0 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06D7F6025057B5E007872D0 /* CategoryCollectionViewCell.swift */; };
 		F06D7F672505A58B007872D0 /* MLServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06D7F662505A58B007872D0 /* MLServices.swift */; };
@@ -52,6 +53,7 @@
 		F036F1C62505C8A900FFAA7D /* LandingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingModel.swift; sourceTree = "<group>"; };
 		F05D921825088A7E00E307AC /* ItemListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListTableViewCell.swift; sourceTree = "<group>"; };
 		F05D921A25089F3900E307AC /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		F05D921C2508BB6800E307AC /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
 		F06D7F5E25057922007872D0 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		F06D7F6025057B5E007872D0 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		F06D7F662505A58B007872D0 /* MLServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLServices.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				F031A15825074EAB00CD6063 /* ItemListViewController.swift */,
 				F031A15A2507632500CD6063 /* ItemListModel.swift */,
 				F05D921825088A7E00E307AC /* ItemListTableViewCell.swift */,
+				F05D921C2508BB6800E307AC /* LoadingTableViewCell.swift */,
 			);
 			path = ItemList;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				F0215B982505FB5C00E9D775 /* UrlImageView.swift in Sources */,
 				F05D921925088A7E00E307AC /* ItemListTableViewCell.swift in Sources */,
 				F036F1C72505C8A900FFAA7D /* LandingModel.swift in Sources */,
+				F05D921D2508BB6800E307AC /* LoadingTableViewCell.swift in Sources */,
 				F0D330522504770F003ED365 /* AppDelegate.swift in Sources */,
 				F05D921B25089F3900E307AC /* ViewControllerExtension.swift in Sources */,
 				F06D7F672505A58B007872D0 /* MLServices.swift in Sources */,
