@@ -14,7 +14,7 @@ class ItemListViewController: UIViewController, ItemListDelegate {
     @IBOutlet weak var itemListTableView: UITableView!
     @IBOutlet weak var tableBottonConstraint: NSLayoutConstraint!
     
-    var url = String()
+    var query = String()
     var categoryInfo = MLServices.MLCategoryDetails()
     
     var model = ItemListModel()
@@ -28,15 +28,18 @@ class ItemListViewController: UIViewController, ItemListDelegate {
         self.itemListTableView.delegate = self
         self.model.delegate = self
         
+        //Set searchBar text
+        self.searchBar.text = query
+        self.searchBar.placeholder = "Que quieres vitrinear?"
+        
         //the items list is fetched by the category and/or search text
-        self.model.getItems(byCategory: categoryInfo.id!, bySearch: url)
+        self.model.getItems(byCategory: categoryInfo.id!, bySearch: query)
         
         //tap gesture implemented to dismiss keyboard
         self.dismissKeyboardOnTap()
         
         // Notification subscription to get keyboard height and adjust table bounds
         notificationSetup()
-        
     }
     
 
@@ -51,9 +54,48 @@ class ItemListViewController: UIViewController, ItemListDelegate {
     */
     
     func setItems() {
+        self.view.bringSubviewToFront(itemListTableView)
         self.itemListTableView.reloadData()
     }
     
+    func noResults(){
+        self.showErrorView(icon: "notFoundIcon", msg: "No se encontraron resultados :(")
+    }
+    
+    func errorInRequest(){
+        self.showErrorView(icon: "errorIcon", msg: "Hubo un error inesperado. \n Intenta de nuevo :)")
+    }
+    
+    func showErrorView(icon: String, msg: String) {
+        let errorView = UIView()
+        errorView.backgroundColor = UIColor.lightGray
+        
+        self.view.addSubview(errorView)
+        errorView.translatesAutoresizingMaskIntoConstraints = false
+        errorView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
+        errorView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        errorView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        errorView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
+        let errorImage = UIImageView()
+        errorImage.image = UIImage(named: icon)
+        errorView.addSubview(errorImage)
+        errorImage.translatesAutoresizingMaskIntoConstraints = false
+        errorImage.centerXAnchor.constraint(equalTo: errorView.centerXAnchor).isActive = true
+        errorImage.centerYAnchor.constraint(equalTo: errorView.centerYAnchor, constant: -50).isActive = true
+        
+        let errorMsg = UILabel()
+        errorMsg.font = UIFont.boldSystemFont(ofSize: 24)
+        errorMsg.text = msg
+        errorMsg.textAlignment = .center
+        errorMsg.numberOfLines = 0
+        errorView.addSubview(errorMsg)
+        errorMsg.translatesAutoresizingMaskIntoConstraints = false
+        errorMsg.topAnchor.constraint(equalTo: errorImage.bottomAnchor, constant: 20).isActive = true
+        errorMsg.centerXAnchor.constraint(equalTo: errorView.centerXAnchor).isActive = true
+        
+        self.view.bringSubviewToFront(errorView)
+    }
 
     @IBAction func pressBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -81,10 +123,9 @@ class ItemListViewController: UIViewController, ItemListDelegate {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
-            self.tableBottonConstraint.constant = keyboardHeight
+            self.tableBottonConstraint.constant = keyboardHeight - view.safeAreaInsets.bottom
         }
     }
-    
     @objc func keyboardWillHide(_ notification: Notification) {
         self.tableBottonConstraint.constant = 0
     }
@@ -98,12 +139,14 @@ class ItemListViewController: UIViewController, ItemListDelegate {
 extension ItemListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // perform segue to item list page with the search query in the sender
-        self.performSegue(withIdentifier: "showItemsList", sender: ["search":searchBar.text])
+        self.model.getItems(byCategory: categoryInfo.id!, bySearch: searchBar.text ?? "")
+        self.searchBar.searchTextField.resignFirstResponder()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.searchBar.resignFirstResponder()
+        self.searchBar.searchTextField.resignFirstResponder()
     }
+    
 }
 
 // MARK: - UICollectionViewDelegate

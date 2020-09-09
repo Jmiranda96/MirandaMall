@@ -46,7 +46,13 @@ class MLServices {
         
         // Init of session manager (mock purposes)
         
-        self.sessionManager = session
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForResource = 10
+        sessionConfig.timeoutIntervalForRequest = 5
+        
+        let newSession = Session(configuration: sessionConfig)
+        
+        self.sessionManager = newSession
     }
     
     /// function to fetch list of categories available in region
@@ -101,7 +107,7 @@ class MLServices {
     
     
     /// fetch list of items fetched by category and/or id
-    func fetchItems(byCategory cat: String = "", bySearch q: String = "", closure: @escaping  (MLISearchResponse?, RequestError?) -> Void ) {
+    func fetchItems(byCategory cat: String = "", bySearch q: String = "", isNewPage: Bool = false, closure: @escaping  (MLISearchResponse?, RequestError?) -> Void ) {
         guard let session = sessionManager else {
             print("NIL SESSION MANAGER")
             return
@@ -111,10 +117,15 @@ class MLServices {
         
         let queryQ = q.isEmpty ? "" : "q=\(q)"
         
+        if !isNewPage {
+            limit = 20
+            offset = 0
+        }
+    
         let stringLimit = String(limit)
         let stringOffset = String(offset)
         
-         self.offset+=limit
+        self.offset+=limit
         
         session.request("\(self.mlUrl)sites/\(self.regionCode)/search?\(queryCat)&\(queryQ)&offset=\(stringOffset)&limit=\(stringLimit)").responseDecodable(of: MLISearchResponse.self) { (response) in
             

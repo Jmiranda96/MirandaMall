@@ -31,15 +31,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="9RA-DR-C2c">
-                                <rect key="frame" x="0.0" y="206" width="414" height="484"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MMLogo" translatesAutoresizingMaskIntoConstraints="NO" id="o4F-9J-UlP">
+                                <rect key="frame" x="95" y="64" width="224" height="224"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="o4F-9J-UlP" secondAttribute="height" multiplier="1:1" id="he2-j9-Hwi"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9RA-DR-C2c">
+                                <rect key="frame" x="0.0" y="308" width="414" height="448"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="gFJ-HE-dMs">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bJt-vh-vAL">
-                                        <rect key="frame" x="0.0" y="126" width="414" height="358"/>
+                                        <rect key="frame" x="0.0" y="134.5" width="414" height="313.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Pw4-GQ-FeM">
                                             <size key="itemSize" width="128" height="128"/>
@@ -113,8 +119,12 @@
                         <constraints>
                             <constraint firstItem="9RA-DR-C2c" firstAttribute="centerX" secondItem="o3W-32-Wuu" secondAttribute="centerX" id="13f-zE-zSj"/>
                             <constraint firstItem="9RA-DR-C2c" firstAttribute="width" secondItem="o3W-32-Wuu" secondAttribute="width" id="2pQ-vt-ZpI"/>
-                            <constraint firstItem="9RA-DR-C2c" firstAttribute="centerY" secondItem="o3W-32-Wuu" secondAttribute="centerY" id="dA0-at-Mbb"/>
-                            <constraint firstItem="bJt-vh-vAL" firstAttribute="height" secondItem="o3W-32-Wuu" secondAttribute="height" multiplier="0.4" id="hSr-hA-fPw"/>
+                            <constraint firstItem="9RA-DR-C2c" firstAttribute="height" secondItem="o3W-32-Wuu" secondAttribute="height" multiplier="0.5" id="B5s-c2-uGk"/>
+                            <constraint firstItem="o4F-9J-UlP" firstAttribute="top" secondItem="3nh-9w-SGd" secondAttribute="top" constant="20" id="WsD-tS-gHm"/>
+                            <constraint firstItem="bJt-vh-vAL" firstAttribute="height" secondItem="o3W-32-Wuu" secondAttribute="height" multiplier="0.35" id="hSr-hA-fPw"/>
+                            <constraint firstItem="o4F-9J-UlP" firstAttribute="centerX" secondItem="o3W-32-Wuu" secondAttribute="centerX" id="hrj-uO-9P1"/>
+                            <constraint firstItem="o4F-9J-UlP" firstAttribute="height" secondItem="o3W-32-Wuu" secondAttribute="height" multiplier="0.25" id="mex-1D-e0r"/>
+                            <constraint firstItem="9RA-DR-C2c" firstAttribute="top" secondItem="o4F-9J-UlP" secondAttribute="bottom" constant="20" id="sq9-6b-uxO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3nh-9w-SGd"/>
                     </view>
@@ -240,6 +250,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="MMLogo" width="1536" height="1536"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
     </resources>
 </document>

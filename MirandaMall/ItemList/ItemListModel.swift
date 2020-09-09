@@ -10,6 +10,8 @@ import Foundation
 
 protocol ItemListDelegate {
     func setItems()
+    func noResults()
+    func errorInRequest()
 }
 
 class ItemListModel {
@@ -20,6 +22,16 @@ class ItemListModel {
 
     func getItems(byCategory cat: String = "", bySearch q: String = ""){
         mlServices.fetchItems(byCategory: cat, bySearch: q) { (items, error) in
+            
+            guard items != nil || error == nil else {
+                self.delegate.errorInRequest()
+                return
+            }
+            
+            guard items!.results!.count > 0  else {
+                self.delegate.noResults()
+                return
+            }
             
             self.itemList = items!.results!
             self.delegate.setItems()

@@ -29,9 +29,17 @@ class LandingViewController: UIViewController, LandingDelegate {
         self.dismissKeyboardOnTap()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.searchBar.text = ""
+        self.searchBar.placeholder = "Que quieres vitrinear?"
+    }
+    
     // function called to update size of CollectionViewCells after change of orientation
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
+        
+        
+        
         if let layout = categoryCollection.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.invalidateLayout()
         }
@@ -54,7 +62,7 @@ class LandingViewController: UIViewController, LandingDelegate {
             
             if let senderInfo = sender as? [String:String?] {
                 if let searchQuery = senderInfo["search"]  {
-                    vc.url = searchQuery!
+                    vc.query = searchQuery!
                 }
             }
             
@@ -105,6 +113,6 @@ extension LandingViewController: UICollectionViewDataSource {
 
 extension LandingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.height*0.4, height: self.view.frame.height*0.4)
+        return CGSize(width: self.view.frame.height*0.35, height: self.view.frame.height*0.35)
     }
 }
