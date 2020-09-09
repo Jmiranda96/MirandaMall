@@ -17,6 +17,7 @@ class MLServices {
     var sessionManager: Session?
     var offset = 0
     var limit = 20
+    
     enum RequestError: Error {
         case invalidStatus
         case errorInRequest
@@ -151,6 +152,7 @@ class MLServices {
         var id: String?
         var title: String?
         var price: Int?
+        var category_id: String?
         var thumbnail: String?
     }
     

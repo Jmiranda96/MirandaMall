@@ -9,9 +9,9 @@
 import UIKit
 
 class ItemListViewController: UIViewController, ItemListDelegate {
-    @IBOutlet weak var itemListCollection: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var itemListTableView: UITableView!
     var url = String()
     var categoryID = String()
     
@@ -22,8 +22,8 @@ class ItemListViewController: UIViewController, ItemListDelegate {
         super.viewDidLoad()
         
         self.searchBar.delegate = self
-        self.itemListCollection.dataSource = self
-        self.itemListCollection.delegate = self
+        self.itemListTableView.dataSource = self
+        self.itemListTableView.delegate = self
         self.model.delegate = self
         
         self.model.getItems(byCategory: categoryID, bySearch: url)
@@ -41,7 +41,7 @@ class ItemListViewController: UIViewController, ItemListDelegate {
     */
     
     func setItems() {
-        self.itemListCollection.reloadData()
+        self.itemListTableView.reloadData()
     }
     
 
@@ -61,15 +61,19 @@ extension ItemListViewController: UISearchBarDelegate {
 
 // MARK: - UICollectionViewDelegate
 
-extension ItemListViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
-        return self.model.itemList.count > 0 ? self.model.itemList.count : 8
-
+extension ItemListViewController: UITableViewDataSource {
+   
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
     }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! CategoryCollectionViewCell
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+         return self.model.itemList.count > 0 ? self.model.itemList.count : 8
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemListCell", for: indexPath) as! ItemListTableViewCell
 
         guard self.model.itemList.count > 0 else {
             return cell
@@ -77,13 +81,14 @@ extension ItemListViewController: UICollectionViewDataSource {
         
         let info = self.model.itemList[indexPath.row]
         
-        cell.catInfo =  MLServices.MLCategoryDetails(id: info.id, name: info.title, picture: info.thumbnail)
+        cell.itemInfo = info
         return cell
     }
+    
+    
 }
 
-extension ItemListViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width*0.4, height: self.view.frame.width*0.4)
-    }
+extension ItemListViewController: UITableViewDelegate {
+    
 }
+
