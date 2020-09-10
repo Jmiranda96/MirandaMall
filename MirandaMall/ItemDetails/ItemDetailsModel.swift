@@ -8,6 +8,28 @@
 
 import Foundation
 
+protocol ItemDetailsDelegate {
+    func setDetails()
+    func errorInRequest()
+}
+
 class ItemDetailsModel {
+ 
+    var delegate: ItemDetailsDelegate!
+    let mlServices = MLServices()
+    var detailInfo = MLServices.MLItemResponse()
     
+    func getDetails(id: String) {
+        mlServices.fetchItemDetails(id: id) { (detailInfo, error) in
+            guard detailInfo != nil || error == nil else {
+               self.delegate.errorInRequest()
+               return
+            }
+            
+            self.detailInfo = detailInfo!
+            
+            self.delegate.setDetails()
+            return
+           }
+        }
 }

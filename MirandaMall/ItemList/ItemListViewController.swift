@@ -52,6 +52,9 @@ class ItemListViewController: UIViewController, ItemListDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? ItemDetailsViewController {
             
+            if let senderInfo = sender as? [String: String] {
+                destination.id = senderInfo["id"]
+            }
         }
     }
     
@@ -227,7 +230,7 @@ extension ItemListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "showDetails", sender: ["info": self.model.itemList[indexPath.row]])
+        self.performSegue(withIdentifier: "showDetails", sender: ["id": self.model.itemList[indexPath.row].id])
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
