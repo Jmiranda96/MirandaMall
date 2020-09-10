@@ -46,16 +46,14 @@ class ItemListViewController: UIViewController, ItemListDelegate {
         notificationSetup()
     }
     
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let destination = segue.destination as? ItemDetailsViewController {
+            
+        }
     }
-    */
     
     func getItems(newPage: Bool = false) {
         loadMoreItems = true
@@ -226,6 +224,10 @@ extension ItemListViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.itemInfo = info
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showDetails", sender: ["info": self.model.itemList[indexPath.row]])
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

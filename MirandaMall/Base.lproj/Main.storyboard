@@ -263,11 +263,28 @@
                         <outlet property="itemListTableView" destination="M8Q-MD-VPQ" id="uJz-7q-4ia"/>
                         <outlet property="searchBar" destination="gfz-9v-wsm" id="44k-pV-iHA"/>
                         <outlet property="tableBottonConstraint" destination="l0S-vO-MIq" id="S9w-Le-mlC"/>
+                        <segue destination="7B6-5c-kKI" kind="show" identifier="showDetails" id="cji-K0-50l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g6X-fw-LKd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2305.7971014492755" y="109.82142857142857"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="WNJ-jS-8Vp">
+            <objects>
+                <viewController id="7B6-5c-kKI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4iQ-yZ-PmN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="gDz-tK-N2W"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nUf-0X-ITC"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mah-6g-iIf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3268" y="110"/>
         </scene>
     </scenes>
     <resources>
