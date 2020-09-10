@@ -22,6 +22,11 @@
 		F06D7F6125057B5E007872D0 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06D7F6025057B5E007872D0 /* CategoryCollectionViewCell.swift */; };
 		F06D7F672505A58B007872D0 /* MLServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06D7F662505A58B007872D0 /* MLServices.swift */; };
 		F080CE9F2509C9F70048A28F /* ItemListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F080CE9E2509C9F70048A28F /* ItemListTests.swift */; };
+		F080CEA22509DFF00048A28F /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F080CEA12509DFF00048A28F /* ItemDetailsViewController.swift */; };
+		F080CEA42509E0080048A28F /* ItemDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F080CEA32509E0080048A28F /* ItemDetailsModel.swift */; };
+		F080CEA82509EDB10048A28F /* ItemDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F080CEA72509EDB10048A28F /* ItemDetailsTableViewCell.swift */; };
+		F080CEAA2509EEFA0048A28F /* ItemDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F080CEA92509EEFA0048A28F /* ItemDetailsCollectionViewCell.swift */; };
+		F09E809A250A11010096F636 /* ItemDetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09E8099250A11010096F636 /* ItemDetailsTests.swift */; };
 		F0D330522504770F003ED365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D330512504770F003ED365 /* AppDelegate.swift */; };
 		F0D330592504770F003ED365 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0D330572504770F003ED365 /* Main.storyboard */; };
 		F0D3305B25047719003ED365 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0D3305A25047719003ED365 /* Assets.xcassets */; };
@@ -59,6 +64,11 @@
 		F06D7F6025057B5E007872D0 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		F06D7F662505A58B007872D0 /* MLServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLServices.swift; sourceTree = "<group>"; };
 		F080CE9E2509C9F70048A28F /* ItemListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListTests.swift; sourceTree = "<group>"; };
+		F080CEA12509DFF00048A28F /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
+		F080CEA32509E0080048A28F /* ItemDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsModel.swift; sourceTree = "<group>"; };
+		F080CEA72509EDB10048A28F /* ItemDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		F080CEA92509EEFA0048A28F /* ItemDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
+		F09E8099250A11010096F636 /* ItemDetailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsTests.swift; sourceTree = "<group>"; };
 		F0D3304E2504770F003ED365 /* MirandaMall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MirandaMall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0D330512504770F003ED365 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0D330582504770F003ED365 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -139,6 +149,17 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		F080CEA02509DFCA0048A28F /* ItemDetails */ = {
+			isa = PBXGroup;
+			children = (
+				F080CEA12509DFF00048A28F /* ItemDetailsViewController.swift */,
+				F080CEA32509E0080048A28F /* ItemDetailsModel.swift */,
+				F080CEA72509EDB10048A28F /* ItemDetailsTableViewCell.swift */,
+				F080CEA92509EEFA0048A28F /* ItemDetailsCollectionViewCell.swift */,
+			);
+			path = ItemDetails;
+			sourceTree = "<group>";
+		};
 		F0D330452504770E003ED365 = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +183,7 @@
 		F0D330502504770F003ED365 /* MirandaMall */ = {
 			isa = PBXGroup;
 			children = (
+				F080CEA02509DFCA0048A28F /* ItemDetails */,
 				F031A15725074E7900CD6063 /* ItemList */,
 				F0215B962505FB2900E9D775 /* Utilities */,
 				F06D7F652505A531007872D0 /* Services */,
@@ -178,6 +200,7 @@
 		F0D330672504771A003ED365 /* MirandaMallTests */ = {
 			isa = PBXGroup;
 			children = (
+				F09E8099250A11010096F636 /* ItemDetailsTests.swift */,
 				F080CE9E2509C9F70048A28F /* ItemListTests.swift */,
 				F02DCD85250734510088E96E /* LandingTests.swift */,
 				F0215B992506102100E9D775 /* ServicesTests.swift */,
@@ -366,10 +389,14 @@
 			files = (
 				F06D7F6125057B5E007872D0 /* CategoryCollectionViewCell.swift in Sources */,
 				F031A15925074EAB00CD6063 /* ItemListViewController.swift in Sources */,
+				F080CEA22509DFF00048A28F /* ItemDetailsViewController.swift in Sources */,
 				F031A15B2507632500CD6063 /* ItemListModel.swift in Sources */,
 				F06D7F5F25057922007872D0 /* LandingViewController.swift in Sources */,
 				F0215B982505FB5C00E9D775 /* UrlImageView.swift in Sources */,
 				F05D921925088A7E00E307AC /* ItemListTableViewCell.swift in Sources */,
+				F080CEAA2509EEFA0048A28F /* ItemDetailsCollectionViewCell.swift in Sources */,
+				F080CEA82509EDB10048A28F /* ItemDetailsTableViewCell.swift in Sources */,
+				F080CEA42509E0080048A28F /* ItemDetailsModel.swift in Sources */,
 				F036F1C72505C8A900FFAA7D /* LandingModel.swift in Sources */,
 				F05D921D2508BB6800E307AC /* LoadingTableViewCell.swift in Sources */,
 				F0D330522504770F003ED365 /* AppDelegate.swift in Sources */,
@@ -385,6 +412,7 @@
 				F080CE9F2509C9F70048A28F /* ItemListTests.swift in Sources */,
 				F0D330692504771A003ED365 /* MirandaMallTests.swift in Sources */,
 				F02DCD86250734510088E96E /* LandingTests.swift in Sources */,
+				F09E809A250A11010096F636 /* ItemDetailsTests.swift in Sources */,
 				F0215B9A2506102100E9D775 /* ServicesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -149,6 +149,29 @@ class MLServices {
         
     }
     
+    
+    func fetchItemDetails(id: String, closure: @escaping  (MLItemResponse?, RequestError?) -> Void){
+        guard let session = sessionManager else {
+            print("NIL SESSION MANAGER")
+            return
+        }
+        session.request("\(self.mlUrl)items/\(id)").responseDecodable(of: MLItemResponse.self) { (response) in
+            
+            guard response.response?.statusCode == 200 else {
+                closure( nil, RequestError.invalidStatus)
+                return
+            }
+            
+            guard response.error == nil else {
+                closure( nil, RequestError.errorInRequest)
+                return
+            }
+            
+            guard let results = response.value else { return }
+            closure(results, nil)
+        }
+    }
+    
     //MARK: - data models
     
     struct MLCategoryDetails: Codable, Equatable {
@@ -171,4 +194,22 @@ class MLServices {
         var thumbnail: String?
     }
     
+    struct MLItemResponse: Codable, Equatable {
+        var title: String? = ""
+        var price: Int? = 0
+        var condition: String? = ""
+        var permalink: String? = ""
+        var sold_quantity: Int? = 0
+        var pictures: [MLPicture]? = [MLPicture()]
+        var attributes: [MLAttributes]? = [MLAttributes()]
+    }
+    
+    struct MLPicture: Codable, Equatable {
+        var secure_url: String? = ""
+    }
+    
+    struct MLAttributes: Codable, Equatable {
+        var name: String? = ""
+        var value_name: String? = ""
+    }
 }
