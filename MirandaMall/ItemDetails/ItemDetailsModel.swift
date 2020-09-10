@@ -16,7 +16,7 @@ protocol ItemDetailsDelegate {
 class ItemDetailsModel {
  
     var delegate: ItemDetailsDelegate!
-    let mlServices = MLServices()
+    var mlServices = MLServices()
     var detailInfo = MLServices.MLItemResponse()
     
     func getDetails(id: String) {

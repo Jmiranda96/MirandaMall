@@ -21,7 +21,7 @@ class ItemDetailsViewController: UIViewController, ItemDetailsDelegate {
     @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var mlImage: UIImageView!
     
-    var id: String!
+    var id = String()
     
     var model = ItemDetailsModel()
     

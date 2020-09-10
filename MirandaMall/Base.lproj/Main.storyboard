@@ -273,7 +273,7 @@
         <!--Item Details View Controller-->
         <scene sceneID="WNJ-jS-8Vp">
             <objects>
-                <viewController id="7B6-5c-kKI" customClass="ItemDetailsViewController" customModule="MirandaMall" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemDetailsViewController" id="7B6-5c-kKI" customClass="ItemDetailsViewController" customModule="MirandaMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4iQ-yZ-PmN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -53,7 +53,7 @@ class ItemListViewController: UIViewController, ItemListDelegate {
         if let destination = segue.destination as? ItemDetailsViewController {
             
             if let senderInfo = sender as? [String: String] {
-                destination.id = senderInfo["id"]
+                destination.id = senderInfo["id"]!
             }
         }
     }
