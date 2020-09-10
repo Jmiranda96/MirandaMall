@@ -13,8 +13,6 @@ import Alamofire
 
 
 class ServicesTests: XCTestCase {
-
-   
     
     struct User: Codable, Equatable {
         let name: String
@@ -22,7 +20,7 @@ class ServicesTests: XCTestCase {
     
     func testSuccessCategoriesListFetching() {
         // Session config
-        let mlService = MLServices(session: getMockedSession())
+        let mlService = MLServices(session: getMockedSession(), testing: true)
 
         //GIVEN
         let apiEndpoint = URL(string: "https://api.mercadolibre.com/sites/MCO/categories")!
@@ -44,7 +42,7 @@ class ServicesTests: XCTestCase {
     
     func testWrongDataCategoriesListFetching() {
         // Session config
-        let mlService = MLServices(session: getMockedSession())
+        let mlService = MLServices(session: getMockedSession(), testing: true)
         
         // GIVEN
         let apiEndpoint = URL(string: "https://api.mercadolibre.com/sites/MCO/categories")!
@@ -66,7 +64,7 @@ class ServicesTests: XCTestCase {
     
     func testFailureCodeCategoriesListFetching() {
         // Session config
-        let mlService = MLServices(session: getMockedSession())
+        let mlService = MLServices(session: getMockedSession(), testing: true)
         
         // GIVEN
         let apiEndpoint = URL(string: "https://api.mercadolibre.com/sites/MCO/categories")!
@@ -78,17 +76,17 @@ class ServicesTests: XCTestCase {
         
         //WHEN
         mlService.fetchCategories { (result, error) in
-            requestExpectation.fulfill()
-            
-            //THEN
-            XCTAssertTrue(error!.errorDescription == MLServices.RequestError.invalidStatus.errorDescription)
+        requestExpectation.fulfill()
+        
+        //THEN
+        XCTAssertTrue(error!.errorDescription == MLServices.RequestError.invalidStatus.errorDescription)
         }
         wait(for: [requestExpectation], timeout: 10.0)
     }
     
     func testSuccessDetailFetching() {
         // Session config
-        let mlService = MLServices(session: getMockedSession())
+        let mlService = MLServices(session: getMockedSession(), testing: true)
 
         // GIVEN
         let apiEndpoint = URL(string: "https://api.mercadolibre.com/categories/MLA5725")!

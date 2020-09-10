@@ -14,7 +14,7 @@ protocol LandingDelegate {
 
 class LandingModel {
     
-    let mlServices = MLServices()
+    var mlServices = MLServices()
     var delegate: LandingDelegate!
     var catList = [MLServices.MLCategoryDetails]()
     

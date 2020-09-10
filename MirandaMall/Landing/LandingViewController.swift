@@ -12,17 +12,27 @@ class LandingViewController: UIViewController, LandingDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var categoryCollection: UICollectionView!
+    @IBOutlet weak var logoImage: UIImageView!
     
     let model: LandingModel = LandingModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.model.delegate = self
+        self.searchBar.delegate = self
         self.categoryCollection.dataSource = self
         self.categoryCollection.delegate = self
         
         // Call to get the categories from services
         self.model.getCategories()
+        
+        //tap gesture implemented to dismiss keyboard
+        self.dismissKeyboardOnTap()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.searchBar.text = ""
+        self.searchBar.placeholder = "Que quieres vitrinear?"
     }
     
     // function called to update size of CollectionViewCells after change of orientation
@@ -33,18 +43,6 @@ class LandingViewController: UIViewController, LandingDelegate {
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    
     // MARK: - LandingDelegate
     func setCategories() {
         //update of category list in main thread
@@ -52,7 +50,38 @@ class LandingViewController: UIViewController, LandingDelegate {
             self.categoryCollection.reloadData()
         }
     }
+    
+    // MARK: - Navigation
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ItemListViewController {
+            
+            // Check the format of sender to config the variables for next Vc
+            
+            if let senderInfo = sender as? [String:String?] {
+                if let searchQuery = senderInfo["search"]  {
+                    vc.query = searchQuery!
+                }
+            }
+            
+            if let senderInfo = sender as? [String:MLServices.MLCategoryDetails] {
+                if let categoryQuery = senderInfo["catInfo"] {
+                    vc.categoryInfo = categoryQuery
+                }
+            }
+        }
+    }
+
+}
+
+// MARK: - UISearchBarDelegate
+
+extension LandingViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // perform segue to item list page with the search query in the sender
+        guard !searchBar.text!.isEmpty else {return}
+        self.performSegue(withIdentifier: "showItemsList", sender: ["search":searchBar.text])
+    }
 }
 
 
@@ -74,10 +103,14 @@ extension LandingViewController: UICollectionViewDataSource {
         cell.catInfo = self.model.catList[indexPath.row]
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showItemsList", sender: ["catInfo":self.model.catList[indexPath.row]])
+    }
 }
 
 extension LandingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.height*0.4, height: self.view.frame.height*0.4)
+        return CGSize(width: self.view.frame.height*0.35, height: self.view.frame.height*0.35)
     }
 }

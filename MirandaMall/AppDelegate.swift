@@ -14,10 +14,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        guard normalExecutionPath() else {
+            window = nil
+            return false
+        }
+
+        // regular setup
+
         return true
     }
 
+    private func normalExecutionPath() -> Bool {
+        return NSClassFromString("XCTestCase") == nil
+    }
 
 }
 
