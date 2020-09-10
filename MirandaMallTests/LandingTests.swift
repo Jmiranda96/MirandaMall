@@ -8,6 +8,8 @@
 
 import XCTest
 @testable import MirandaMall
+import Alamofire
+@testable import Mocker
 
 
 class LandingTests: XCTestCase {
@@ -162,6 +164,50 @@ class LandingTests: XCTestCase {
         XCTAssertTrue(afterHeight<priorHeight)
     }
     
+    func testLandingModel() {
+        //GIVEN
+        
+        //Injection of mocked session
+        mainvc.model.mlServices = MLServices(session: getMockedSession(), testing: true)
+        
+        //Mock of fetchCatalogs
+        let apiEndpointCat = URL(string: "https://api.mercadolibre.com/sites/MCO/categories")!
+        let expectedResponse = [
+            MLServices.MLCategoryDetails(id: "1", name: "testCategory_1", picture: "123.jpg")
+        ]
+        var mockedData = try! JSONEncoder().encode(expectedResponse)
+        let mockCat = Mock(url: apiEndpointCat, contentType: .json, statusCode: 200, data: [.get: mockedData])
+        mockCat.register()
+        
+        //Mock of fectCatalogDetails
+        let apiEndpointDet = URL(string: "https://api.mercadolibre.com/categories/1")!
+        let expectedResponseDet = MLServices.MLCategoryDetails(id: "1", name: "testCategory_1", picture: "123.jpg")
+        
+        mockedData = try! JSONEncoder().encode(expectedResponseDet)
+        let mockDet = Mock(url: apiEndpointDet, contentType: .json, statusCode: 200, data: [.get: mockedData])
+        mockDet.register()
+        
+        //WHEN
+        mainvc.model.delegate = mainvc
+        mainvc.model.getCategories()
+        let requestExpect = expectation(description: "request")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+           requestExpect.fulfill()
+        }
+        wait(for: [requestExpect], timeout: 7)
+        
+        //THEN
+        XCTAssertEqual(mainvc.model.catList.count, 1)
+        XCTAssertEqual(mainvc.model.catList.first?.name, "testCategory_1")
+        
+    }
+    
+    func getMockedSession() -> Session{
+        let configuration = URLSessionConfiguration.af.default
+        configuration.protocolClasses = [MockingURLProtocol.self] + (configuration.protocolClasses ?? [])
+        let sessionManager = Session(configuration: configuration)
+        return sessionManager
+    }
     
 
 }

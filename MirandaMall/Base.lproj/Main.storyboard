@@ -143,7 +143,7 @@
         <!--Item List View Controller-->
         <scene sceneID="56p-rV-uNK">
             <objects>
-                <viewController id="Bom-kM-ykL" customClass="ItemListViewController" customModule="MirandaMall" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemListViewController" id="Bom-kM-ykL" customClass="ItemListViewController" customModule="MirandaMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dFU-wV-nJp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -38,9 +38,6 @@ class LandingViewController: UIViewController, LandingDelegate {
     // function called to update size of CollectionViewCells after change of orientation
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        
-        
-        
         if let layout = categoryCollection.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.invalidateLayout()
         }
