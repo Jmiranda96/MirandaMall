@@ -12,10 +12,22 @@ class ItemDetailsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var attributeLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
+    
+    var attributeString: String = "" {
+        didSet {
+            self.attributeLabel.text = attributeString
+        }
+    }
+    var valueString: String = "" {
+        didSet {
+            self.valueLabel.text = valueString
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
+
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
