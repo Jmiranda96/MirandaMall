@@ -10,6 +10,13 @@ import UIKit
 
 class ItemDetailsViewController: UIViewController {
 
+    @IBOutlet weak var imageCollection: UICollectionView!
+    @IBOutlet weak var itemTitle: UILabel!
+    @IBOutlet weak var itemPrice: UILabel!
+    @IBOutlet weak var itemDescription: UILabel!
+    @IBOutlet weak var buyButton: UIStackView!
+    @IBOutlet weak var attributesTable: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,3 +35,4 @@ class ItemDetailsViewController: UIViewController {
     */
 
 }
+
