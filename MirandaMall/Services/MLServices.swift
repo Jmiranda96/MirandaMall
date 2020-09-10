@@ -31,7 +31,7 @@ class MLServices {
         }
     }
     
-    init(session: Session? = Session()) {
+    init(session: Session? = Session(), testing: Bool = false) {
         // get url direction from info.plist
         guard let serverUrl = Bundle.main.infoDictionary?["ml-api-url"] as? String  else {
             fatalError("ML api direction not found")
@@ -46,13 +46,17 @@ class MLServices {
         
         // Init of session manager (mock purposes)
         
-        let sessionConfig = URLSessionConfiguration.default
-        sessionConfig.timeoutIntervalForResource = 10
-        sessionConfig.timeoutIntervalForRequest = 5
+        guard testing else {
+            let sessionConfig = URLSessionConfiguration.default
+            sessionConfig.timeoutIntervalForResource = 10
+            sessionConfig.timeoutIntervalForRequest = 5
+            let newSession = Session(configuration: sessionConfig)
+            self.sessionManager = newSession
+            return
+        }
         
-        let newSession = Session(configuration: sessionConfig)
+        self.sessionManager = session
         
-        self.sessionManager = newSession
     }
     
     /// function to fetch list of categories available in region

@@ -14,11 +14,12 @@ class ItemListViewController: UIViewController, ItemListDelegate {
     @IBOutlet weak var itemListTableView: UITableView!
     @IBOutlet weak var tableBottonConstraint: NSLayoutConstraint!
     
+    var errorView = UIView()
+    
     var query = String()
     var categoryInfo = MLServices.MLCategoryDetails()
     var isLoading = false
     var loadMoreItems = true
-    
     
     var model = ItemListModel()
     
@@ -62,6 +63,7 @@ class ItemListViewController: UIViewController, ItemListDelegate {
     }
     
     func setItems() {
+        self.errorView.removeFromSuperview()
         self.view.bringSubviewToFront(itemListTableView)
         self.itemListTableView.reloadData()
         self.isLoading = false
@@ -81,7 +83,7 @@ class ItemListViewController: UIViewController, ItemListDelegate {
     }
     
     func showErrorView(icon: String, msg: String) {
-        let errorView = UIView()
+        errorView = UIView()
         errorView.backgroundColor = UIColor.lightGray
         
         self.view.addSubview(errorView)

@@ -131,6 +131,7 @@
                     <navigationItem key="navigationItem" id="cbT-Bs-rwh"/>
                     <connections>
                         <outlet property="categoryCollection" destination="bJt-vh-vAL" id="PWy-o5-Xss"/>
+                        <outlet property="logoImage" destination="o4F-9J-UlP" id="aeS-MD-MsI"/>
                         <outlet property="searchBar" destination="gFJ-HE-dMs" id="S7C-is-Wec"/>
                         <segue destination="Bom-kM-ykL" kind="show" identifier="showItemsList" id="b3U-zC-QxG"/>
                     </connections>

@@ -12,6 +12,7 @@ class LandingViewController: UIViewController, LandingDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var categoryCollection: UICollectionView!
+    @IBOutlet weak var logoImage: UIImageView!
     
     let model: LandingModel = LandingModel()
     
